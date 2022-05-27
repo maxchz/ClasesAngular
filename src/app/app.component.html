@@ -15,7 +15,7 @@
       <input type="text" name="cargo" id="cargo" placeholder="Cargo" class="form-control" [(ngModel)]="cuadroCargo"/>
     </div>
     <div class="form-group col-md-3">
-      <label for="nombre">Salario:</label>
+      <label for="nombre"App>Salario:</label>
       <input type="number" name="salario" id="salario" placeholder="Salario" class="form-control" [(ngModel)]="cuadroSalario"/>
     </div>
 
@@ -25,12 +25,10 @@
   </form>
 </div>
 <br>
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div *ngFor="let empleado of empleados, let i=index">
-       <span style="font-weight: bold">{{i+1}}</span> {{empleado.nombre}} {{empleado.apellido}} {{empleado.cargo}} {{empleado.salario}}
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Introducimos el componente hijo craado: componente-hijo-empleado -->
+
+<app-componente-hijo-empleado  *ngFor="let empleado of empleados, let i=index" [empleadoLista]="empleado" [indice]="i">
+
+</app-componente-hijo-empleado>
+
+

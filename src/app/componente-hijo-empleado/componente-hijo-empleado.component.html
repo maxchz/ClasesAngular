@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div>
+       <span style="font-weight: bold">{{indice+1}}</span> {{empleadoLista.nombre}} {{empleadoLista.apellido}} {{empleadoLista.cargo}} {{empleadoLista.salario}}
+      </div>
+      <!-- Agregamos las caracteristicas de cada empleado, provenientes del componente hijo caract-empleado-component -->
+      <ul style="list-style:none">
+        <li *ngFor="let carac of caracteristicas">{{carac}}</li>
+      </ul>
+      <app-caract-empleado-component (caracteristicasEmpleado)="agregaCarac($event)"></app-caract-empleado-component>
+
+    </div>
+  </div>
+</div>
