@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Empleado } from './empleado.model';
+import { ServicioEmpleado2Service } from './servicio-empleado2.service';
 import { ServicioEmpleadosService } from './servicio-empleados.service';
 
 @Component({
@@ -7,17 +8,12 @@ import { ServicioEmpleadosService } from './servicio-empleados.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   titulo  = 'Listado de Empleados';
 
+  // variable donde se almacenara los datos provenientes del servicio DAta service inyectado
+  empleados:Empleado[]=[];
 
-  empleados: Empleado[]=[
-    new Empleado('Lucas','Lopez','Operario',3000),
-    new Empleado('Pedro','Sancehz','RRHH',4000),
-    new Empleado('Laura','Ferreyra','Ingeniera',5000),
-    new Empleado('Sofia','Acros','Oficinista',2500),
-
-  ];
   cuadroNombre: string='';
   cuadroApellido: string='';
   cuadroCargo: string='';
@@ -27,12 +23,16 @@ export class AppComponent {
     let miEmpleado= new Empleado(this.cuadroNombre,this.cuadroApellido,this.cuadroCargo,this.cuadroSalario);
     //Inyectamos el servicio antes que se agregue el emplado a la lista
     this.miServicio.mostrarMensaje('Nombre del empleado: '+ miEmpleado.nombre + ' Apellido del empleado: '+miEmpleado.apellido)
-
-    this.empleados.push(miEmpleado);
+    this.empleadosService.agregarEmpleadoServicio(miEmpleado);
   }
 
-  //Creamos el constructor para que se pueda inyectar el Servicio
-  constructor(private miServicio:ServicioEmpleadosService){
+  //Creamos el constructor para que se pueda inyectar los servicios que usemos en la App
+  constructor(private miServicio:ServicioEmpleadosService, private empleadosService:ServicioEmpleado2Service){
+    //asignamos a la variable empleados los datos provenietes del servicio
+    // this.empleados=this.empleadosService.empleados;
+  }
+  ngOnInit(): void {
+       this.empleados=this.empleadosService.empleados;
 
   }
 
