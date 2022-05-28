@@ -10,15 +10,15 @@ export class CaractEmpleadoComponentComponent implements OnInit {
 //DEcorador @Output, linea de codigo para flujo de datos de hijo a padre
   @Output() caracteristicasEmpleado = new EventEmitter<string>();
   //Injectamos el servicio en el constructor
-  constructor(private miServicio:ServicioEmpleadosService) {
+  // constructor(private miServicio:ServicioEmpleadosService) {
 
-  };
+  // };
 
   agregaCaracteristica(value:string){
     //agregamos la ventana emergente nates que agregen las caracteristicas al componente placeholder
-    this.miServicio.mostrarMensaje(value);
+    // this.miServicio.mostrarMensaje(value);
 
-    this.caracteristicasEmpleado.emit(value);
+    // this.caracteristicasEmpleado.emit(value);
   };
 
 

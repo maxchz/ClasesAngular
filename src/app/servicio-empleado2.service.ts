@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Empleado } from './empleado.model';
+import { ServicioEmpleadosService } from './servicio-empleados.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+//Para usar servicios anidados debemos usar el decorador @Injectable y  usar el constructor
+@Injectable()
 export class ServicioEmpleado2Service {
 
   empleados: Empleado[]=[
@@ -15,9 +15,14 @@ export class ServicioEmpleado2Service {
   ];
 
   agregarEmpleadoServicio(empleado:Empleado){
+    //llamamos la servicio para mostrar la ventana emergente
+    this.servicioVentanaEmergente.mostrarMensaje(
+      'La perona que va a agregar es: '+ empleado.nombre + ' '+empleado.apellido + '\n'
+    + 'Con un slaario de: '+empleado.salario+'\n'
+    + 'Su cargo es: '+empleado.cargo);
     this.empleados.push(empleado);
 
   }
 
-  constructor() { }
+  constructor(private servicioVentanaEmergente: ServicioEmpleadosService) { }
 }
