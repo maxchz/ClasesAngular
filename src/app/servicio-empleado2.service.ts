@@ -29,7 +29,7 @@ export class ServicioEmpleado2Service {
     return empleado;
   }
 
-  //metodo actualizar empleado
+  //metodo o servicio para actualizar empleado
   actualizarEmpleado(indice:number, empleado:Empleado){
     let empleadoModificado=this.empleados[indice];
     empleadoModificado.nombre=empleado.nombre;
@@ -38,6 +38,11 @@ export class ServicioEmpleado2Service {
     empleadoModificado.salario=empleado.salario;
 
   }
+  //metodo o servicio para eliminar un empleado
+  eliminarEmpleado(indice:number){
+    this.empleados.splice(indice,1);
+  }
+
 
 
   constructor(private servicioVentanaEmergente: ServicioEmpleadosService) { }

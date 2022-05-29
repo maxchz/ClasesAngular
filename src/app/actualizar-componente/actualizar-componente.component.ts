@@ -51,5 +51,11 @@ this.router.navigate(['']);
     this.router.navigate(['']);
 
   }
+  //funcion para eliminar empleado
+  eliminaEmpleado(){
+    //llamamos a un servicio que elimina el empleado
+    this.empleadosService.eliminarEmpleado(this.indice);
+    this.router.navigate(['']);
+  }
 
 }
