@@ -12,6 +12,7 @@ import { ProyectosComponentComponent } from './proyectos-component/proyectos-com
 import { QuienesComponentComponent } from './quienes-component/quienes-component.component';
 import { ContactoComponentComponent } from './contacto-component/contacto-component.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ActualizarComponenteComponent } from './actualizar-componente/actualizar-componente.component';
 
 
 
@@ -19,7 +20,9 @@ const appRoutes:Routes=[
 {path:'',component:HomeComponentComponent},
 {path:'proyectos', component:ProyectosComponentComponent},
 {path:'quienes', component:QuienesComponentComponent},
-{path:'contacto', component:ContactoComponentComponent}
+{path:'contacto', component:ContactoComponentComponent},
+{path:'actualizar/:id', component:ActualizarComponenteComponent}
+
 
 ];
 
@@ -31,7 +34,8 @@ const appRoutes:Routes=[
     HomeComponentComponent,
     ProyectosComponentComponent,
     QuienesComponentComponent,
-    ContactoComponentComponent
+    ContactoComponentComponent,
+    ActualizarComponenteComponent
   ],
   imports: [
     BrowserModule,
