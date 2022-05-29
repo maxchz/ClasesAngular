@@ -2,9 +2,15 @@
   <div class="row">
     <div class="col">
       <div>
-        <!-- Agregamos una etique anchor para que cada empleado sea un link que diriga y se envie a la pagina actualizar -->
-        <a [routerLink]="['/actualizar',indice]">
-          <span style="font-weight: bold">{{indice+1}}</span> {{empleadoLista.nombre}} {{empleadoLista.apellido}} {{empleadoLista.cargo}} {{empleadoLista.salario}}
+        <span style="font-weight: bold">{{indice+1}}</span> {{empleadoLista.nombre}} {{empleadoLista.apellido}} {{empleadoLista.cargo}} {{empleadoLista.salario}}
+        <!-- Usamos queryParams para pasar un valor por url, al hacer click en Actualizar pasamos la variable accion=1-->
+        <a style="margin-right:40px;" [routerLink]="['/actualizar',indice]" [queryParams]="{accion:'1'}">
+          Actualizar
+        </a>
+        <!-- Usamos queryParams para pasar un valor por url, al hacer click en Eliminar pasamos la variable accion=2-->
+
+        <a [routerLink]="['/actualizar',indice]" [queryParams]="{accion:'2'}">
+          Eliminar
         </a>
       </div>
       <!-- Agregamos las caracteristicas de cada empleado, provenientes del componente hijo caract-empleado-component -->

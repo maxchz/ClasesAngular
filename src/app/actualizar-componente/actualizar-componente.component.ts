@@ -25,6 +25,9 @@ export class ActualizarComponenteComponent implements OnInit {
     this.cuadroCargo=empleado.cargo;
     this.cuadroSalario=empleado.salario
 
+    //rescatamos el valor de accion que viaja por la url y la asignamos a la variable accion
+    this.accion=parseInt(this.route.snapshot.queryParams['accion']);
+
   }
 
   volverHome(){
@@ -43,19 +46,33 @@ this.router.navigate(['']);
   indice:number =0;
 
   //funcion para actualizar empleado que llega al formulario
-  actualizaEmpleado(){
+  // actualizaEmpleado(){
+  //   let miEmpleado= new Empleado(this.cuadroNombre,this.cuadroApellido,this.cuadroCargo,this.cuadroSalario);
+  //   //Inyectamos el servicio antes que se agregue el emplado a la lista
+  //   // this.miServicio.mostrarMensaje('Nombre del empleado: '+ miEmpleado.nombre + ' Apellido del empleado: '+miEmpleado.apellido)
+  //   this.empleadosService.actualizarEmpleado(this.indice,miEmpleado);
+  //   this.router.navigate(['']);
+
+  // }
+  // //funcion para eliminar empleado
+  // eliminaEmpleado(){
+  //   //llamamos a un servicio que elimina el empleado
+  //   this.empleadosService.eliminarEmpleado(this.indice);
+  //   this.router.navigate(['']);
+  // }
+
+  //Creamos una unica funcion para modificar o eliminar deacuerdo al valor de "accion" enviado por url
+accion: number =0;
+actualizaEmpleado(){
+  if (this.accion==1){
+
     let miEmpleado= new Empleado(this.cuadroNombre,this.cuadroApellido,this.cuadroCargo,this.cuadroSalario);
-    //Inyectamos el servicio antes que se agregue el emplado a la lista
-    // this.miServicio.mostrarMensaje('Nombre del empleado: '+ miEmpleado.nombre + ' Apellido del empleado: '+miEmpleado.apellido)
     this.empleadosService.actualizarEmpleado(this.indice,miEmpleado);
-    this.router.navigate(['']);
+    this.router.navigate(['']);}
+    else if (this.accion==2){
 
-  }
-  //funcion para eliminar empleado
-  eliminaEmpleado(){
-    //llamamos a un servicio que elimina el empleado
     this.empleadosService.eliminarEmpleado(this.indice);
-    this.router.navigate(['']);
-  }
+    this.router.navigate(['']);}
 
+  }
 }
